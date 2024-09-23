@@ -1,0 +1,62 @@
+CREATE DATABASE GerenciamentoEventos;
+USE GerenciamentoEventos;
+
+CREATE TABLE Eventos (
+    EventoID INT PRIMARY KEY AUTO_INCREMENT,
+    NomeEvento VARCHAR(100) NOT NULL,
+    DataEvento DATE NOT NULL,
+    LocalEvento VARCHAR(100),
+    Descricao TEXT
+);
+
+CREATE TABLE Participantes (
+    ParticipanteID INT PRIMARY KEY AUTO_INCREMENT,
+    NomeParticipante VARCHAR(100) NOT NULL,
+    Email VARCHAR(100) NOT NULL,
+    Telefone VARCHAR(15)
+);
+
+CREATE TABLE Inscricoes (
+    InscricaoID INT PRIMARY KEY AUTO_INCREMENT,
+    EventoID INT,
+    ParticipanteID INT,
+    DataInscricao DATE,
+    FOREIGN KEY (EventoID) REFERENCES Eventos(EventoID),
+    FOREIGN KEY (ParticipanteID) REFERENCES Participantes(ParticipanteID)
+);
+
+INSERT INTO Eventos (NomeEvento, DataEvento, LocalEvento, Descricao) VALUES
+('Workshop de SQL', '2024-09-10', 'Auditorio 1', 'Workshop sobre comandos SQL para iniciantes.'),
+('Palestra sobre Big Data', '2024-10-15', 'Sala 101', 'Palestra sobre as tendências e inovações em Big Data.');
+
+INSERT INTO Participantes (NomeParticipante, Email, Telefone) VALUES
+('João Silva', 'joao.silva@email.com', '123456789'),
+('Maria Souza', 'maria.souza@email.com', '987654321');
+
+INSERT INTO Inscricoes (EventoID, ParticipanteID, DataInscricao) VALUES
+(1, 1, '2024-09-01'),
+(2, 2, '2024-09-05');
+
+SELECT * FROM Eventos;
+
+SELECT p.NomeParticipante, p.Email, p.Telefone 
+FROM Inscricoes i 
+JOIN Participantes p ON i.ParticipanteID = p.ParticipanteID 
+WHERE i.EventoID = 1;
+
+SELECT e.NomeEvento, e.DataEvento, e.LocalEvento 
+FROM Inscricoes i 
+JOIN Eventos e ON i.EventoID = e.EventoID 
+WHERE i.ParticipanteID = 1;
+
+UPDATE Eventos 
+SET LocalEvento = 'Auditorio 2', DataEvento = '2024-09-12' 
+WHERE EventoID = 1;
+
+UPDATE Participantes 
+SET Telefone = '1122334455' 
+WHERE ParticipanteID = 2;
+
+DELETE FROM Eventos WHERE EventoID = 2;
+
+DELETE FROM Inscricoes WHERE InscricaoID = 1;
