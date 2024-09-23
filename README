@@ -1,0 +1,41 @@
+# Gerenciamento de Eventos
+
+Este projeto é um sistema de gerenciamento de eventos que permite o cadastro de eventos, participantes e suas inscrições. O sistema facilita o controle de eventos, permitindo adicionar, atualizar, consultar e excluir dados de forma eficiente.
+
+## Estrutura do Banco de Dados
+
+O sistema é composto por três tabelas principais:
+- **Eventos**: Armazena os dados dos eventos, como nome, data, local e descrição.
+- **Participantes**: Armazena as informações dos participantes, como nome, email e telefone.
+- **Inscrições**: Relaciona eventos e participantes, registrando a inscrição em um evento específico.
+
+## Funcionalidades
+
+1. **Inserção de Dados**:
+   - Cadastrar novos eventos e participantes.
+   - Inscrever participantes em eventos.
+
+2. **Consultas**:
+   - Listar todos os eventos cadastrados.
+   - Listar os participantes inscritos em um evento específico.
+   - Exibir detalhes dos eventos em que um participante está inscrito.
+
+3. **Atualizações**:
+   - Atualizar a data e o local de um evento.
+   - Atualizar as informações de contato de um participante.
+
+4. **Exclusões**:
+   - Excluir eventos e suas inscrições associadas.
+   - Remover inscrições de participantes em eventos.
+
+## Requisitos
+
+- MySQL ou outro sistema de gerenciamento de banco de dados que suporte SQL.
+- Ferramentas como MySQL Workbench ou phpMyAdmin para executar os scripts SQL.
+
+## Como Usar
+
+1. Clone o repositório para sua máquina local:
+   ```bash
+   git clone https://github.com/seu-usuario/gerenciamento-eventos.git
+   cd gerenciamento-eventos
